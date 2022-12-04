@@ -3,12 +3,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useSmartAccountContext } from "../../contexts/SmartAccountContext";
 import { useWeb3AuthContext } from "../../contexts/SocialLoginContext";
 import Button from "../../components/Button";
-import { useNavigate } from "react-router-dom";
+
 import "./LoginPage.css";
 
 const LoginPage = () => {
   const classes = useStyles();
-  const navigate = useNavigate();
+
   const {
     address,
     loading: eoaLoading,
@@ -58,9 +58,26 @@ const LoginPage = () => {
         ),
       address &&
         React.createElement(Button, {
-          onClickFunc: () => getUserInfo() && navigate("/organizer-profile"),
+          onClickFunc: () => getUserInfo(),
           title: "Visit Your Organizer Profile...",
         }),
+      userInfo &&
+        React.createElement(
+          "div",
+          { style: { maxWidth: 800, wordBreak: "break-all" } },
+          React.createElement("h2", null, "Organizer Info"),
+          React.createElement("image", userInfo.profileImage),
+          React.createElement(
+            "pre",
+            { style: { whiteSpace: "pre-wrap" } },
+            userInfo.name
+          ),
+          React.createElement(
+            "pre",
+            { style: { whiteSpace: "pre-wrap" } },
+            userInfo.email
+          )
+        ),
       userInfo &&
         React.createElement("div", {
           style: { maxWidth: 800, wordBreak: "break-all" },
@@ -118,3 +135,4 @@ const useStyles = makeStyles(() => ({
   },
 }));
 export default LoginPage;
+
