@@ -6,6 +6,7 @@ import OrganizerProfile from "./pages/OrganizerProfile/OrganizerProfile";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { Nav } from "./components/Navbar";
 import Footer from "./components/Footer";
+import Events from "./pages/Events/Events";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
           <Route path="/create-event" element={<AddEvents />} />
           <Route path="/apply-organizer" element={<LoginPage />} />
           <Route path="/organizer-profile" element={<OrganizerProfile />} />
+          <Route path="/events" element = {<Events />} />
+
         </Routes>
         <Footer />
       </Router>
